@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--
+    namespace: 名称空间; 指定为接口的全类名
+    id: 唯一标识
+    resultType: 返回值类型
+    #{id}: 从传递过来的参数中取出id值
+ -->
+
+<mapper namespace="com.sour.mybatis.dao.EmployeeMapper">
+
+    <!--    使用全类名-->
+<!--    <select id="getEmployeeById" resultType="com.sour.mybatis.bean.Employee">-->
+<!--
+    使用别名
+    databaseId: 配置的数据源类型, 可以在配置文件xml里面查看  databaseId="mysql"
+-->
+    <select id="getEmployeeById" resultType="employee" >
+        select * from employee where id = #{id}
+    </select>
+
+    <select id="getEmployeeByIdAndLastName" resultType="com.sour.mybatis.bean.Employee">
+        select * from employee where id = #{id} and last_name = #{lastName}
+    </select>
+
+    <select id="getEmployeeByMap" resultType="com.sour.mybatis.bean.Employee">
+            select * from employee where id = #{id} and last_name = #{lastName}
+    </select>
+
+    <select id="getEmployeeByPojg" resultType="com.sour.mybatis.bean.Employee">
+            select * from employee where id = #{id} and last_name = #{lastName}
+    </select>
+
+<!--    返回集合-->
+    <select id="getEmployeesByLastNameLike" resultType="com.sour.mybatis.bean.Employee">
+            select * from employee where last_name like #{lastName}
+    </select>
+
+<!--    返回Map-->
+    <select id="getReturnMap" resultType="java.util.Map">
+            select * from employee where id = #{id}
+    </select>
+
+<!--    Map<主键, Employee> -->
+    <select id="getReturnMapByLastNameLike" resultType="java.util.Map">
+        select * from employee where last_name like #{lastName}
+    </select>
+
+    <!--
+        parameterType: 参数类型, 可以省略
+        获取自增主键值:
+            mysql支持自增主键, 自增主键的获取, myBatis也是利用useGeneratedKeys
+            useGeneratedKeys="true":  使用自增主键获取主键值策略
+            keyProperty: 指定对应的主键属性, 也就是mybatis获取到主键值后, 将这个值赋值给javaBean的哪个属性
+    -->
+    <insert id="addEmployee" parameterType="com.sour.mybatis.bean.Employee" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `employee`(`last_name`, `gender`, `email`)
+         VALUES (#{lastName}, #{gender}, #{email});
+    </insert>
+
+
+    <update id="updateEmployee">
+        UPDATE employee SET `last_name` = #{lastName}, `gender` = #{gender}, `email` = #{email} WHERE `id` = #{id};
+    </update>
+
+    <delete id="deleteEmployee">
+        delete from employee where id = #{id}
+    </delete>
+
+
+
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sour.mybatis.dao.EmployeePlusMapper">
+
+<!--
+    自定义某个javaBean的封装规则
+        type: 自定义规则的javaBean
+        id: 唯一id, 方便引用
+     其他不指定的列会自动封装, 推荐全列映射都写
+-->
+
+    <resultMap id="MyEmp" type="com.sour.mybatis.bean.Employee" >
+<!--
+    指定主键列的封装规则
+        id: 指定哪一列
+        property: 对应的javaBean属性
+-->
+        <id column="id" property="id"/>
+<!--        普通列封装规则-->
+        <result column="last_name" property="lastName" />
+    </resultMap>
+
+    <select id="getEmployeeById" resultMap="MyEmp" >
+        select * from employee where id = #{id}
+    </select>
+
+</mapper>

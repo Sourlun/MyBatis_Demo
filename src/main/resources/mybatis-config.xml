@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+<!--
+    mybatis可以使用properties来引入外部properties配置文件内容
+        resource: 引入类路径下的资源
+        url: 引入网络路径
+-->
+<!--    <properties resource="dbConfig.properties"></properties>-->
+    
+<!--
+    settings包含了很多重要的设置项
+-->
+    <settings>
+<!--        下划线转驼峰-->
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
+
+<!--
+    typeAliases 别名处理器. 可以为java类型起别名
+-->
+    <typeAliases>
+        <typeAlias type="com.sour.mybatis.bean.Employee" alias="employee" />
+        
+<!--        批量起别名: 为当前包下面的类默认取一个别名(类名小写)-->
+<!--        <package name="com.sour.mybatis.bean"/>-->
+
+<!--        还有在类的头上加注解取别名-->
+    </typeAliases>
+
+<!--
+    environments: 配置具体的环境信息  dev,test
+        transactionManager: 事务管理器  JDBC,MANAGED
+-->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.cj.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/learning_mybatis?serverTimezone=UTC&amp;useSSL=false"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+<!--
+    databaseIdProvider: 支持多数据库厂商
+        type: 厂商标识   MYSQL, Oracle, SQL Service...
+-->
+    <databaseIdProvider type="DB_VENDOR">
+        <property name="MYSQL" value="mysql"/>
+        <property name="Oracle" value="oracle"/>
+    </databaseIdProvider>
+
+    <mappers>
+<!--        使用mapper.xml映射-->
+        <mapper resource="mapper\EmployeeMapper.xml"/>
+        <mapper resource="mapper\EmployeePlusMapper.xml"/>
+<!--        使用注解-->
+        <mapper class="com.sour.mybatis.dao.EmployeeMapperAnnotation"/>
+    </mappers>
+</configuration>

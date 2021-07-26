@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e1cc4ba3-dc11-4040-988a-7cce3676aca5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1vkXSPlWzyfc144vHXco81jrAu9" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.17816092" />
+  </component>
+  <component name="RebelAgentSelection">
+    <selection>jr</selection>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.sour.mybatis.dao" />
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\MyProject\MyBatis\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MyBatiResultMap">
+    <configuration name="MyBatiResultMap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyBatiResultMap" />
+      <module name="MyBatis" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBatisTest01" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyBatisTest01" />
+      <module name="MyBatis" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBatisTestCRUD" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyBatisTestCRUD" />
+      <module name="MyBatis" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBatisTestReturnList" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyBatisTestReturnList" />
+      <module name="MyBatis" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyBatisTestReturnMap" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="MyBatisTestReturnMap" />
+      <module name="MyBatis" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.MyBatiResultMap" />
+        <item itemvalue="Application.MyBatisTestReturnMap" />
+        <item itemvalue="Application.MyBatisTestReturnList" />
+        <item itemvalue="Application.MyBatisTestCRUD" />
+        <item itemvalue="Application.MyBatisTest01" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e1cc4ba3-dc11-4040-988a-7cce3676aca5" name="Default Changelist" comment="" />
+      <created>1627107059294</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1627107059294</updated>
+      <workItem from="1627107063781" duration="1381000" />
+      <workItem from="1627108476607" duration="8958000" />
+      <workItem from="1627189994527" duration="8923000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="249" y="0" key="#Project_Structure" timestamp="1627108220243">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="#Project_Structure/0.0.1536.824@0.0.1536.824" timestamp="1627108220243" />
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1627191043235">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="361" y="71" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1627191043235" />
+    <state x="511" y="213" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1627108905423">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="511" y="213" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1627108905423" />
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser" timestamp="1627210123613">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="574" y="96" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1627210123613" />
+    <state width="442" height="466" key="DebuggerActiveHint" timestamp="1627191798660">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="442" height="466" key="DebuggerActiveHint/0.0.1536.824@0.0.1536.824" timestamp="1627191798660" />
+    <state width="1478" height="210" key="GridCell.Tab.0.bottom" timestamp="1627209953882">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1478" height="210" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1627209953882" />
+    <state width="1478" height="210" key="GridCell.Tab.0.center" timestamp="1627209953882">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1478" height="210" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1627209953882" />
+    <state width="1478" height="210" key="GridCell.Tab.0.left" timestamp="1627209953882">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1478" height="210" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1627209953882" />
+    <state width="1478" height="210" key="GridCell.Tab.0.right" timestamp="1627209953882">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1478" height="210" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1627209953882" />
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom" timestamp="1627191890915">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1627191890915" />
+    <state width="1493" height="261" key="GridCell.Tab.1.center" timestamp="1627191890915">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1627191890915" />
+    <state width="1493" height="261" key="GridCell.Tab.1.left" timestamp="1627191890915">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1627191890915" />
+    <state width="1493" height="261" key="GridCell.Tab.1.right" timestamp="1627191890915">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="261" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1627191890915" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1627109782362">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1627109782362" />
+    <state x="380" y="91" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1627108324718">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="380" y="91" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1536.824@0.0.1536.824" timestamp="1627108324718" />
+    <state x="499" y="161" key="extract.method.dialog" timestamp="1627208565683">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="499" y="161" key="extract.method.dialog/0.0.1536.824@0.0.1536.824" timestamp="1627208565683" />
+    <state x="425" y="66" width="672" height="676" key="search.everywhere.popup" timestamp="1627207743300">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="425" y="66" width="672" height="676" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1627207743300" />
+  </component>
+</project>
