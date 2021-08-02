@@ -17,6 +17,11 @@
     <settings>
 <!--        下划线转驼峰-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
+<!--        开启懒加载 (默认true) -->
+<!--        延迟加载的全局开关。当开启时，所有关联对象都会延迟加载。 特定关联关系中可通过设置 fetchType 属性来覆盖该项的开关状态。-->
+        <setting name="lazyLoadingEnabled" value="true"/>
+<!--        true:任一方法的调用都会加载该对象的所有延迟加载属性。 false:，每个延迟加载属性会按需加载（参考 lazyLoadTriggerMethods)。-->
+        <setting name="aggressiveLazyLoading" value="false"/>
     </settings>
 
 <!--
@@ -60,6 +65,7 @@
 <!--        使用mapper.xml映射-->
         <mapper resource="mapper\EmployeeMapper.xml"/>
         <mapper resource="mapper\EmployeePlusMapper.xml"/>
+        <mapper resource="mapper\DepartmentMapper.xml"/>
 <!--        使用注解-->
         <mapper class="com.sour.mybatis.dao.EmployeeMapperAnnotation"/>
     </mappers>

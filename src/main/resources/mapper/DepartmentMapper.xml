@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.sour.mybatis.dao.DepartmentMapper">
+
+
+    <select id="getById" resultType="com.sour.mybatis.bean.Department">
+        select * from department where id = #{id}
+    </select>
+
+
+<!--  ==============================  association 场景二 START ============================================================ -->
+
+<!--
+    =========   查询部门的时候将部门对应的所以员工信息也查询出来 START =====================
+-->
+    <resultMap id="MyDeptWithEmp" type="com.sour.mybatis.bean.Department">
+        <id column="dept_id" property="id" />
+        <result column="dept_name" property="deptName" />
+<!--
+        collection: 定义集合
+            ofType: 指定集合里面元素类型
+            fetchType: 默认lazy 延迟加载 (也可以在这里配置立即获取)
+        association: 定义对象
+            扩展:
+                如果想把多列的值传进去, 则需要把多列的值封装成map传递
+                    column="{key1=column1, key2=column2}"
+
+-->
+        <collection property="employees" ofType="com.sour.mybatis.bean.Employee" column="id" fetchType="lazy">
+            <id column="emp_id" property="id" />
+            <result column="last_name" property="lastName" />
+            <result column="gender" property="gender" />
+            <result column="email" property="email" />
+        </collection>
+    </resultMap>
+
+    <select id="getByIdPlus" resultMap="MyDeptWithEmp">
+        SELECT d.id dept_id, dept_name, e.id emp_id, e.last_name, gender, email
+        from department d
+        left JOIN employee e on d.id = e.dept_id
+        WHERE d.id = #{id}
+    </select>
+
+
+<!--
+    分步查询
+-->
+    <resultMap id="MyDeptStep" type="com.sour.mybatis.bean.Department" >
+        <id column="id" property="id" />
+        <result column="dept_name" property="deptName" />
+        <collection property="employees" select="com.sour.mybatis.dao.EmployeeMapper.getByDeptId" column="id" />
+    </resultMap>
+    <select id="getByIdStep" resultMap="MyDeptStep">
+            select * from department where id = #{id}
+    </select>
+</mapper>

@@ -49,6 +49,11 @@
         select * from employee where last_name like #{lastName}
     </select>
 
+
+    <select id="getByDeptId" resultType="com.sour.mybatis.bean.Employee">
+        SELECT * FROM employee WHERE dept_id = #{deptId}
+    </select>
+
     <!--
         parameterType: 参数类型, 可以省略
         获取自增主键值:

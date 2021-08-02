@@ -83,4 +83,6 @@ public interface EmployeeMapper {
     @MapKey("id")  //指定Map的key, 封装map的时候,用哪个属性做key
     Map<Integer, Employee> getReturnMapByLastNameLike(String lastName);
 
+    List<Employee> getByDeptId(Integer deptId);
+
 }

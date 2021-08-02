@@ -1,17 +1,30 @@
 package com.sour.mybatis.bean;
 
+import java.util.List;
+
 public class Department {
 
     private Integer id;
 
-    private String deptname;
+    private String deptName;
+
+    private List<Employee> employees;
 
     @Override
     public String toString() {
         return "Department{" +
                 "id=" + id +
-                ", deptname='" + deptname + '\'' +
+                ", deptName='" + deptName + '\'' +
+                ", employees=" + employees +
                 '}';
+    }
+
+    public String getDeptName() {
+        return deptName;
+    }
+
+    public void setDeptName(String deptName) {
+        this.deptName = deptName;
     }
 
     public Integer getId() {
@@ -22,11 +35,11 @@ public class Department {
         this.id = id;
     }
 
-    public String getDeptname() {
-        return deptname;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
-    public void setDeptname(String deptname) {
-        this.deptname = deptname;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 }

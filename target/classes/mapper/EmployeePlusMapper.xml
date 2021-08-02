@@ -23,8 +23,96 @@
         <result column="last_name" property="lastName" />
     </resultMap>
 
+
+<!--
+    方法一:
+        包含部门信息的Employee
+            联合查询: 级联属性封装结果集
+            在Employee有department属性
+-->
+    <resultMap id="MyDifEmp" type="com.sour.mybatis.bean.Employee" >
+        <id column="id" property="id" />
+        <result column="last_name" property="lastName" />
+        <result column="gender" property="gender" />
+        <result column="dept_id" property="department.id" />
+        <result column="dept_name" property="department.deptName" />
+    </resultMap>
+
+
+
+<!--
+    方法二:
+        使用 association 标签
+        包含部门信息的Employee
+            联合查询: 级联属性封装结果集
+            association: 可以指定联合的javaBean对象
+                property: 指定哪个属性是联合对象
+                javaType: 指定这个属性对象的类型 (不可以省略)
+-->
+    <resultMap id="MyDifEmpByAssociation" type="com.sour.mybatis.bean.Employee" >
+        <id column="id" property="id" />
+        <result column="last_name" property="lastName" />
+        <result column="gender" property="gender" />
+        <association property="department" javaType="com.sour.mybatis.bean.Department" >
+                <id property="id" column="dept_id" />
+                <result column="dept_name" property="deptName" />
+        </association>
+    </resultMap>
+
+
+
+
     <select id="getEmployeeById" resultMap="MyEmp" >
         select * from employee where id = #{id}
     </select>
+
+<!--
+    场景一:
+        查询EMP的同时查询员工对应的部门信息
+        EMP和DEPT
+-->
+    <select id="getEmpAndDept" resultMap="MyDifEmp">
+        SELECT e.id id, e.last_name last_name, gender, e.dept_id dept_id, dept_name FROM employee e, department d
+        WHERE e.dept_id = d.id and e.id = #{id}
+    </select>
+
+    <select id="getEmpAndDeptByAssociation" resultMap="MyDifEmp">
+        SELECT e.id id, e.last_name last_name, gender, e.dept_id dept_id, dept_name FROM employee e, department d
+        WHERE e.dept_id = d.id and e.id = #{id}
+    </select>
+
+
+<!--
+    使用分步骤来查询'员工'和'部门'
+ -->
+    <resultMap id="MyEmpByStep" type="com.sour.mybatis.bean.Employee">
+        <id column="id" property="id" />
+        <result column="last_name" property="lastName" />
+        <result column="email" property="email" />
+        <result column="gender" property="gender" />
+<!--
+        使用select指定的方法(传入column指定的这列参数的值)查出对象, 并封装给'property'指定的属性
+        可懒加载(在下面说明)
+            select: 表明当前属性是调用指定的方法查出结果
+            column: 将哪一列的值传给这个方法
+-->
+        <association property="department" select="com.sour.mybatis.dao.DepartmentMapper.getById" column="dept_id"/>
+    </resultMap>
+    <select id="getEmployeeByIdStep" resultMap="MyEmpByStep">
+        select * from employee where id = #{id}
+    </select>
+
+<!--
+    association
+        可以延迟加载
+            每次查询Employee的时候, Department也顺便查询出来了
+            所以想 需要Department的时候再查询
+                需要在分步查询加上两个配置 (在 mybatis-config.xml setting里面)
+-->
+
+<!--    ============================  association 场景一 END ============================================================ -->
+
+
+
 
 </mapper>
