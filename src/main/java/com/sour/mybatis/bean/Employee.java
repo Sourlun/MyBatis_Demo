@@ -2,11 +2,13 @@ package com.sour.mybatis.bean;
 
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
+
 /**
  * 别名
  */
 @Alias("employee")
-public class Employee {
+public class Employee implements Serializable {
 
     private Integer id;
 

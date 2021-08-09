@@ -22,6 +22,8 @@
         <setting name="lazyLoadingEnabled" value="true"/>
 <!--        true:任一方法的调用都会加载该对象的所有延迟加载属性。 false:，每个延迟加载属性会按需加载（参考 lazyLoadTriggerMethods)。-->
         <setting name="aggressiveLazyLoading" value="false"/>
+<!--        开启二级缓存。  默认true-->
+        <setting name="cacheEnabled" value="true"/>
     </settings>
 
 <!--
@@ -66,6 +68,7 @@
         <mapper resource="mapper\EmployeeMapper.xml"/>
         <mapper resource="mapper\EmployeePlusMapper.xml"/>
         <mapper resource="mapper\DepartmentMapper.xml"/>
+        <mapper resource="mapper\EmployeeDynamicSqlMapper.xml"/>
 <!--        使用注解-->
         <mapper class="com.sour.mybatis.dao.EmployeeMapperAnnotation"/>
     </mappers>

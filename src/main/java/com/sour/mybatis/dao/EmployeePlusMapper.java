@@ -18,4 +18,8 @@ public interface EmployeePlusMapper {
      */
     Employee getEmployeeByIdStep(Integer id);
 
+    /**
+     * 鉴别器查询
+     */
+    Employee getEmployeeByIdDiscriminator(Integer id);
 }

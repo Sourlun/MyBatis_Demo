@@ -36,6 +36,19 @@ public class MyBatiResultMap {
 
         // 一对多获取 (分步)
         getByIdStep(sqlSessionFactory);
+
+        // 鉴别器查询
+        getEmployeeByIdDiscriminator(sqlSessionFactory);
+    }
+
+    /**
+     * 鉴别器查询
+     */
+    private static void getEmployeeByIdDiscriminator(SqlSessionFactory sqlSessionFactory) {
+        SqlSession openSession = sqlSessionFactory.openSession();
+        EmployeePlusMapper mapper = openSession.getMapper(EmployeePlusMapper.class);
+        Employee empAndDept = mapper.getEmployeeByIdDiscriminator(2);
+        System.out.println(empAndDept);
     }
 
     /**

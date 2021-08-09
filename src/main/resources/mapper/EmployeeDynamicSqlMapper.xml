@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--
+    动态SQL
+        if  判断
+        choose (when, otherwise)
+        trim (where, set)  字符串截取
+        foreach
+
+       遇到特殊符号要写转义字符
+        如: && -> &amp
+-->
+
+<mapper namespace="com.sour.mybatis.dao.EmployeeDynamicSqlMapper">
+
+    <!--
+        if:
+            test: 判断表达式
+        where
+            放在where的地方, 就不需要放 1=1
+        1, 查询员工:
+            * 携带了哪个字段就用哪个字段查询
+    -->
+    <select id="getByConditionIf" resultType="com.sour.mybatis.bean.Employee">
+        select * from employee
+            <where>
+                <if test="id != null">
+                    id = #{id}
+                </if>
+                <if test=" lastName != null and lastName != '' " >
+                    and last_name like #{lastName}
+                </if>
+                <if test=" email != null &amp;&amp; email != '' " >
+                    and email like #{email}
+                </if>
+                <if test=" gender == 0 or gender == 1 " >
+                    and gender = #{gender}
+                </if>
+            </where>
+    </select>
+
+
+<!--
+    使用Trim
+        prefix: 前缀: 给拼接后的字符串加一个前缀
+        prefixOverrides: 前缀覆盖, 去掉拼接后的字符串前面的字符
+        suffix: 后缀: 给拼接后的字符串加一个后缀
+        suffixOverrides: 后缀覆盖, 去掉拼接后的字符串后面的字符
+-->
+    <select id="getByConditionTrim" resultType="com.sour.mybatis.bean.Employee">
+        select * from employee
+        <trim prefix="where" prefixOverrides="" suffix="" suffixOverrides="and">
+            <if test="id != null">
+                id = #{id}
+            </if>
+            <if test=" lastName != null and lastName != '' " >
+                 last_name like #{lastName} and
+            </if>
+            <if test=" email != null &amp;&amp; email != '' " >
+                 email like #{email} and
+            </if>
+            <if test=" gender == 0 or gender == 1 " >
+               gender = #{gender} and
+            </if>
+        </trim>
+
+    </select>
+
+
+
+    <!--
+        使用choose (when, otherwise)
+
+        如果带了id就用id查; 如果带了lastName就用lastName查; 否则查询女
+    -->
+    <select id="getByConditionChoose" resultType="com.sour.mybatis.bean.Employee">
+        select * from employee
+        <where>
+            <choose>
+                <when test="id != null">
+                    id = #{id}
+                </when>
+                <when test="lastName != null">
+                    last_name like #{lastName}
+                </when>
+                <otherwise>
+                    gender = 0
+                </otherwise>
+            </choose>
+        </where>
+    </select>
+
+
+
+    <!--
+        Set标签:
+            1, 用在update的情况
+    -->
+
+    <update id="updateEmp">
+        UPDATE employee
+        <set>
+            <if test="lastName != null" >
+                `last_name` = #{lastName},
+            </if>
+            <if test="gender != null" >
+                `gender` = #{gender},
+            </if>
+            <if test="email != null" >
+                `email` = #{email},
+            </if>
+        </set>
+        <where>
+            `id` = #{id}
+        </where>
+    </update>
+
+
+
+    <!--
+        foreach的使用:
+            collection: 指定要遍历的集合(传入的值)
+            list的参数会特殊处理封装在map里面, map的key就叫list
+            item: 遍历的每一项
+            separator: 每个元素直接的分隔符
+            open: 以什么开始
+            close: 以什么结束
+            index: 索引, 遍历list就是索引;  遍历map就是key,item就是map的值
+    
+    -->
+<!--    批量查询-->
+    <select id="getEmpsByConditionForeach" resultType="com.sour.mybatis.bean.Employee">
+        select * from employee where id in
+        <foreach collection="ids" item="item_id" separator="," open="(" close=")" index="i">
+            #{item_id}
+        </foreach>
+    </select>
+
+
+    <insert id="addEmps">
+        <!-- 引入公共的片段 -->
+        <include refid="innerColumn" >
+            <property name="deptId" value="dept_id"/>
+        </include>
+        VALUES
+         <foreach collection="emps"  item="item" separator="," index="i" >
+              (#{item.lastName}, #{item.gender}, #{item.email}, #{item.deptId})
+         </foreach>
+    </insert>
+
+
+
+
+
+
+
+
+<!--
+    bind:
+        为某个表达式取别名
+-->
+    <select id="testBind" resultType="com.sour.mybatis.bean.Employee">
+        <bind name="_lastName" value="'%'+lastName+'%'"/>
+        select * from employee where last_name like #{_lastName}
+    </select>
+
+
+
+<!--
+    sql:
+        抽取重用的内容
+        需要配合 include 使用
+            property: 自定义的内容块变化, 注意是用$符号取出 #{}是取传参的值
+-->
+    <sql id="innerColumn" >
+        INSERT INTO `learning_mybatis`.`employee`(`last_name`, `gender`, `email`, ${deptId})
+    </sql>
+</mapper>
