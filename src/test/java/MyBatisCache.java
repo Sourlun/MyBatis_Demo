@@ -27,11 +27,19 @@ import java.io.InputStream;
  *          3, 不同nameSpace查出的数据会放在自己的map中
  *              sqlSession==EmployeeMapper   => Employee
  *                           ==DepartmentMapper => Department
+ *          ***  查出的数据都会先存在一级缓存中, 只有session关闭后才会转移到二级缓存中  ***
  *
  *      使用步骤:
  *          1, 开启全局配置
  *          2, 在需要的mapper.xml中配置使用二级缓存
  *              <cache/>
+ *          3, POJO需要实现Serializable
+ *
+ *      设置:
+ *          1, cacheEnabled = false: 关闭的是二级缓存 (一级缓存是一直可用的)
+ *          2, 每个select标签都有useCache="true" (二级缓存)
+ *          3, 每个增删改标签, 都有flushCache=true  意味着: 增删改执行后都会清掉'一级缓存'和'二级缓存'
+ *          4, sqlSession.clearCache(): 只会清除当前session的'一级缓存'
  */
 public class MyBatisCache {
 
